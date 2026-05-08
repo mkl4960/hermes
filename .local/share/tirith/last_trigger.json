@@ -1,0 +1,24 @@
+{
+  "rule_ids": [
+    "dotfile_overwrite"
+  ],
+  "severity": "HIGH",
+  "command_redacted": "ssh-keyscan -t rsa,ecdsa,ed25519 github.com | sort -u > ~/.ssh/known_hosts.tmp &...",
+  "findings": [
+    {
+      "rule_id": "dotfile_overwrite",
+      "severity": "HIGH",
+      "title": "Dotfile overwrite detected",
+      "description": "Command redirects output to a dotfile in the home directory, which could overwrite shell configuration",
+      "evidence": [
+        {
+          "type": "command_pattern",
+          "pattern": "redirect to dotfile",
+          "matched": "sort -u > ~/.ssh/known_hosts.tmp"
+        }
+      ],
+      "mitre_id": "T1546.004"
+    }
+  ],
+  "timestamp": "2026-05-08T03:13:53.805367504+00:00"
+}

@@ -1,0 +1,290 @@
+# ======================
+# SECRETS AND KEYS - NEVER COMMIT
+# ======================
+
+# Environment files containing secrets
+.env
+.env.*
+!*.example.env
+
+# SSH keys and related files
+.ssh/
+ssh/
+**/.ssh/
+**/ssh/
+*ssh*
+*SSH*
+
+# Private keys (various formats and names)
+*key*
+*KEY*
+*id_rsa*
+*id_dsa*
+*id_ecdsa*
+*id_ed25519*
+*_key
+*_key.pem
+*_key.rsa
+*_key.dsa
+Authorization
+credentials
+secret
+_secrets
+.aws/
+.azure/
+.gcp/
+heroku
+.netrc
+npmrc
+pip
+Composer.settings.json
+idea/
+*.idea/
+*.kdbx
+*.gpg
+*.asc
+*.pgp
+
+# Specific known sensitive files in this environment
+auth.json
+auth.lock
+.skills_prompt_snapshot.json
+.channel_directory.json
+.gateway_state.json
+.discord_threads.json
+test_monitor.py
+
+# ======================
+# DATABASES AND CACHES
+# ======================
+
+# SQLite and other databases
+*.db
+*.sqlite
+*.sqlite3
+response_store.db*
+state.db*
+models_dev_cache.json
+ollama_cloud_models_cache.json
+
+# Hermes/AI model caches and data
+hermes-*
+hermes_agent-*
+models/
+vector-stores/
+embeddings/
+checkpoints/
+
+# Package managers and virtual environments
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm*
+.vendor/
+composer.lock
+Gemfile.lock
+Mix.lock
+Packages/
+.lock-wscript
+*.psc
+.psc-project
+.ziplock
+vendor/
+.bundle/
+.ruby-version
+*/node_modules/*
+*/bower_components/
+
+
+# ======================
+# LOGS AND TEMPORARY FILES
+# ======================
+
+# Logs
+*.log
+logs/
+log/
+*.log.*
+logs/**
+**/logs/
+**/log/
+
+# Temporary files
+*.tmp
+*.temp
+*.temp/
+cache/
+.caches/
+*/cache/*
+*/.cache/
+__pycache__/
+*.py[cod]
+*$py.class
+.sessions/
+.sessions/*
+sessions/
+sessions*/
+.npm
+._*
+
+# Build outputs
+dist/
+build/
+out/
+output/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*~
+.*.swp
+.DS_Store
+.Thumbs.db
+
+# Testing and coverage
+.coverage
+.cache
+.nyc_output
+.coverage.*
+cover/
+*.lcov*
+.hypothesis/
+.pytest_cache/
+.tox/
+.hospital/
+.htmlcov/
+/cover/
+coverage.xml
+
+# ======================
+# SPECIFIC HERMES DIRECTORIES TO EXCLUDE (SENSITIVE)
+# ======================
+
+# Hermes specific sensitive directories
+home/
+memories/
+.scripts/
+.cron/
+.platforms/
+.skins/
+
+# Specific sensitive subdirectories to exclude entirely
+home/.ssh/
+home/.aws/
+home/.azure/
+home/.gcp/
+home/.config/
+home/.local/share/
+home/.local/state/
+home/.cache/
+home/.npm/
+home/.yarn/
+home/.pip/
+home/.composer/
+home/.gem/
+home/.rvm/
+home/.nvm/
+home/.volta/
+home/.deno/
+home/.cargo/
+home/.go/
+home/.lein/
+home/.m2/
+home/.ivy2/
+home/.sbt/
+home/.gradle/
+home/.dotnet/
+home/.nuget/
+home/.pulumi/
+home/.terraform/
+home/.vagrant/
+home/.docker/
+home/.kube/
+home/.helm/
+home/.npmrc
+home/.yarnrc
+home/.pypirc
+home/.aws/credentials
+home/.azure/credentials
+home/.gcp/credentials
+
+# ======================
+# WHITELIST - ONLY THESE GET COMMITTED
+# ======================
+
+# Whitelist essential config files that don't contain secrets
+!.gitignore
+!SOUL.md
+!config.yaml
+!scripts/
+!skills/
+!agentmail/
+!bin/
+!lib/
+!LICENSE*
+!README*
+!CHANGELOG*
+!CONTRIBUTING*
+!docs/
+!examples/
+!templates/
+!webui-mvp/
+
+# But exclude anything in whitelisted dirs that matches secrets above
+scripts/**/*key*
+scripts/**/*secret*
+scripts/**/*token*
+skills/**/*key*
+skills/**/*secret*
+skills/**/*token*
+agentmail/**/*key*
+agentmail/**/*secret*
+agentmail/**/*token*
+bin/**/*key*
+bin/**/*secret*
+bin/**/*token*
+lib/**/*key*
+lib/**/*secret*
+lib/**/*token*
+
+# ======================
+# FINAL CATCHALL
+# ======================
+
+# Catch any remaining potential secrets
+*password*
+*passwd*
+*pwd*
+*secret*
+*token*
+*credential*
+*private*
+*_key
+*_keys
+*id_*
+*_rsa
+*_dsa
+*_ecdsa
+*_ed25519
+Authorization
+credentials
+.m2/settings.xml
+.mysql_history
+.mysqlsh_history
+.pgpass
+.psql_history
+.ptmysqlconn
+.sql_history
+.sqlite_history
+.vsql_history

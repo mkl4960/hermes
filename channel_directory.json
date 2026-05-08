@@ -1,0 +1,90 @@
+{
+  "updated_at": "2026-05-08T04:04:11.919845",
+  "platforms": {
+    "discord": [
+      {
+        "id": "1484402736958148680",
+        "name": "general",
+        "guild": "ML's server",
+        "type": "channel"
+      },
+      {
+        "id": "1484402794055336128",
+        "name": "openclaw",
+        "guild": "ML's server",
+        "type": "channel"
+      },
+      {
+        "id": "1494191383219798197",
+        "name": "hermes",
+        "guild": "ML's server",
+        "type": "channel"
+      },
+      {
+        "id": "1495149442494631937:1495149442494631937",
+        "name": "ML's server / #hermes / hello / topic 1495149442494631937",
+        "type": "thread",
+        "thread_id": "1495149442494631937"
+      },
+      {
+        "id": "1495204445078818816:1495204445078818816",
+        "name": "ML's server / #hermes / show me popular Asian restaurants in East Hanover NJ, including addresses, ph... / topic 1495204445078818816",
+        "type": "thread",
+        "thread_id": "1495204445078818816"
+      },
+      {
+        "id": "1495209142481064067",
+        "name": "mkl4960",
+        "type": "dm",
+        "thread_id": null
+      },
+      {
+        "id": "1495288797649436783:1495288797649436783",
+        "name": "ML's server / #hermes / what movies are in theaters / topic 1495288797649436783",
+        "type": "thread",
+        "thread_id": "1495288797649436783"
+      },
+      {
+        "id": "1494191383219798197",
+        "name": "ML's server / #hermes",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1496739460316926124:1496739460316926124",
+        "name": "ML's server / #hermes / The YouTube link check no longer works.. i have not received any new notifica... / topic 1496739460316926124",
+        "type": "thread",
+        "thread_id": "1496739460316926124"
+      },
+      {
+        "id": "1498071256988123148:1498071256988123148",
+        "name": "ML's server / #hermes / Email mkl4960@yahoo.com 5 day weather forecast for Boston / topic 1498071256988123148",
+        "type": "thread",
+        "thread_id": "1498071256988123148"
+      }
+    ],
+    "telegram": [
+      {
+        "id": "8634626966",
+        "name": "Michael Lau",
+        "type": "dm",
+        "thread_id": null
+      }
+    ],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": []
+  }
+}

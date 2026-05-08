@@ -1,0 +1,78 @@
+{
+  "jobs": [
+    {
+      "id": "951c4d39def3",
+      "name": "daily-weather-email",
+      "prompt": "/opt/hermes/.venv/bin/python /opt/data/scripts/hourly_weather_f.py",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 * * *",
+        "display": "0 10 * * *"
+      },
+      "schedule_display": "0 10 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 20
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-04-19T04:30:20.515718+00:00",
+      "next_run_at": "2026-05-08T10:00:00+00:00",
+      "last_run_at": "2026-05-07T10:00:59.842027+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": null
+    },
+    {
+      "id": "5a55669c82b0",
+      "name": "agentmail-monitor",
+      "prompt": "/opt/hermes/.venv/bin/python /opt/data/skills/email/agentmail-monitor/scripts/monitor.py",
+      "skills": [
+        "agentmail-monitor"
+      ],
+      "skill": "agentmail-monitor",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/10 * * * *",
+        "display": "*/10 * * * *"
+      },
+      "schedule_display": "*/10 * * * *",
+      "repeat": {
+        "times": null,
+        "completed": 2162
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-04-19T21:49:44.554442+00:00",
+      "next_run_at": "2026-05-08T04:10:00+00:00",
+      "last_run_at": "2026-05-08T04:02:11.853892+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "discord:1494191383219798197",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1495209142481064067",
+        "chat_name": "mkl4960",
+        "thread_id": null
+      }
+    }
+  ],
+  "updated_at": "2026-05-08T04:02:11.855233+00:00"
+}
