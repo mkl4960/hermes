@@ -1,0 +1,48 @@
+#!/bin/bash
+# Run backup at the next 04:00:00 America/New_York time
+
+# Function to compute epoch for next 04:00:00 in America/New_York
+get_next_04_et_epoch() {
+    # Get current time in America/New_York
+    # We'll compute using date with TZ
+    # Get today's date in ET
+    et_date=$(TZ=America/New_York date +%Y-%m-%d)
+    # Form timestamp for today 04:00:00 ET
+    today_04=$(TZ=America/New_York date -d "${et_date} 04:00:00" +%s 2>/dev/null)
+    if [ $? -ne 0 ]; then
+        # try GNU date alternative
+        today_04=$(TZ=America/New_York date +%s -d "${et_date} 04:00:00" 2>/dev/null)
+    fi
+    now=$(date +%s)
+    if [ -z "$today_04" ]; then
+        echo "Failed to parse date" >&2
+        return 1
+    fi
+    if [ "$today_04" -gt "$now" ]; then
+        echo "$today_04"
+    else
+        # tomorrow 04:00:00 ET
+        tomorrow_04=$(TZ=America/New_York date -d "${et_date} +1 day 04:00:00" +%s 2>/dev/null)
+        if [ $? -ne 0 ]; then
+            tomorrow_04=$(TZ=America/New_York date +%s -d "${et_date} +1 day 04:00:00" 2>/dev/null)
+        fi
+        echo "$tomorrow_04"
+    fi
+}
+
+target_epoch=$(get_next_04_et_epoch)
+if [ $? -ne 0 ]; then
+    echo "Could not determine target time" >&2
+    exit 1
+fi
+
+now=$(date +%s)
+sleep_seconds=$(( target_epoch - now ))
+
+if [ $sleep_seconds -gt 0 ]; then
+    # Sleep until target time
+    sleep $sleep_seconds
+fi
+
+# Run backup
+/opt/data/scripts/opt-data-git-backup.sh

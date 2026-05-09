@@ -1,0 +1,19 @@
+#!/bin/bash
+# Wrapper to run backup at 4am Eastern time, adjusting for DST automatically
+
+# Set timezone to Eastern Time
+export TZ=America/New_York
+
+# Get current hour and minute
+HOUR=$(date +%H)
+MINUTE=$(date +%M)
+
+# Check if it's exactly 4:00 AM
+if [[ "$HOUR" == "04" && "$MINUTE" == "00" ]]; then
+    echo "$(date): Running Eastern Time backup..."
+    /opt/data/scripts/opt-data-git-backup.sh
+else
+    # Optional: log for debugging
+    # echo "$(date): Not backup time (current ET: $HOUR:$MINUTE)"
+    exit 0
+fi

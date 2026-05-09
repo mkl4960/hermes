@@ -18,15 +18,15 @@
       "schedule_display": "0 10 * * *",
       "repeat": {
         "times": null,
-        "completed": 20
+        "completed": 21
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-19T04:30:20.515718+00:00",
-      "next_run_at": "2026-05-08T10:00:00+00:00",
-      "last_run_at": "2026-05-07T10:00:59.842027+00:00",
+      "next_run_at": "2026-05-09T10:00:00+00:00",
+      "last_run_at": "2026-05-08T10:01:00.999940+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -53,15 +53,15 @@
       "schedule_display": "*/10 * * * *",
       "repeat": {
         "times": null,
-        "completed": 2162
+        "completed": 2282
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-19T21:49:44.554442+00:00",
-      "next_run_at": "2026-05-08T04:10:00+00:00",
-      "last_run_at": "2026-05-08T04:02:11.853892+00:00",
+      "next_run_at": "2026-05-09T00:10:00+00:00",
+      "last_run_at": "2026-05-09T00:00:38.002838+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -76,7 +76,7 @@
     {
       "id": "56a5d7b86169",
       "name": "opt-data-daily-backup",
-      "prompt": "Run the opt-data Git backup script at 4am daily.",
+      "prompt": "/opt/data/scripts/opt-data-backup-daily-et.sh",
       "skills": [],
       "skill": null,
       "model": null,
@@ -85,22 +85,22 @@
       "script": null,
       "schedule": {
         "kind": "cron",
-        "expr": "0 4 * * *",
-        "display": "0 4 * * *"
+        "expr": "0 0 * * *",
+        "display": "0 0 * * *"
       },
-      "schedule_display": "0 4 * * *",
+      "schedule_display": "0 0 * * *",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 4
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-08T04:09:14.401319+00:00",
-      "next_run_at": "2026-05-09T04:00:00+00:00",
-      "last_run_at": null,
-      "last_status": null,
+      "next_run_at": "2026-05-10T00:00:00+00:00",
+      "last_run_at": "2026-05-08T13:36:08.817182+00:00",
+      "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
@@ -113,5 +113,5 @@
       "enabled_toolsets": null
     }
   ],
-  "updated_at": "2026-05-08T04:09:14.404036+00:00"
+  "updated_at": "2026-05-09T00:00:38.004206+00:00"
 }

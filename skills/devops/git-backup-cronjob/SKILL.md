@@ -18,6 +18,7 @@ Automatically backup a directory to a GitHub repository using SSH authentication
 - Access to a GitHub account where you can add SSH keys
 - The target directory you wish to backup
 - Cron available in the environment
+- Understanding of what files should be backed up (avoid secrets, logs, etc.)
 
 ## Steps
 
@@ -39,15 +40,42 @@ git remote add origin git@github.com:username/repository.git
 git remote -v
 ```
 
-### 2. Set Up .gitignore (Optional but Recommended)
-Create or update `.gitignore` to exclude sensitive files:
+### 2. Set Up Comprehensive .gitignore (Critical for Security)
+Create or update `.gitignore` to exclude sensitive files and directories:
+
 ```bash
-# Example: exclude .env file
-echo ".env" >> .gitignore
-# Or if file exists, ensure the line is present
-if ! grep -q "^\.env$" .gitignore; then
-  echo ".env" >> .gitignore
-fi
+# Hermes-specific exclusions
+# SSH keys and authentication
+echo '/.ssh/' >> .gitignore
+echo '/home/.ssh/' >> .gitignore
+
+# Environment files and secrets
+echo '.env' >> .gitignore
+echo '*.env' >> .gitignore
+echo 'auth.json' >> .gitignore
+echo 'secrets.json' >> .gitignore
+
+# Databases and model caches
+echo 'state.db' >> .gitignore
+echo 'response_store.db' >> .gitignore
+echo '*.sqlite' >> .gitignore
+echo 'model_cache/' >> .gitignore
+
+# Logs and temporary files
+echo 'logs/' >> .gitignore
+echo 'sessions/' >> .gitignore
+echo 'cache/' >> .gitignore
+echo '.heroku/' >> .gitignore
+
+# Hermes-specific directories that contain ephemeral or sensitive data
+echo 'memories/' >> .gitignore
+echo '.skills_prompt_snapshot.json' >> .gitignore
+
+# Binaries and platform-specific files (optional, based on your needs)
+echo 'bin/' >> .gitignore
+
+# After adding, verify important files are NOT excluded
+# You can test with: git check-ignore -v <file>
 ```
 
 ### 3. Generate SSH Key for Authentication (if not already present)
@@ -66,6 +94,11 @@ ssh-keygen -t ed25519 -f ~/.ssh/hermes_github -N "" -C "hermes@your-host"
 # Add GitHub to known_hosts to prevent interactive prompts
 ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
 chmod 600 ~/.ssh/known_hosts
+
+# In Hermes/container environments, also ensure known_hosts is accessible:
+mkdir -p /opt/data/.ssh
+cp ~/.ssh/known_hosts /opt/data/.ssh/known_hosts
+chmod 600 /opt/data/.ssh/known_hosts
 ```
 
 ### 4. Create the Backup Script
@@ -174,6 +207,81 @@ To run the backup daily at 4 AM:
 - Adjust the cron schedule: `0 4 * * *` (daily at 4 AM)
 - Examples: `0 */6 * * *` (every 6 hours), `30 2 * * 0` (weekly on Sunday at 2:30 AM)
 
+### Automatic DST Adjustment for Time Zone-Specific Times
+To run a job at a specific local time (like 4am Eastern Time) that automatically adjusts for Daylight Saving Time, there are two common approaches:
+
+#### Approach 1: Frequent Checking (Simple but less efficient)
+1. Create a wrapper script that:
+   - Sets the desired timezone (e.g., `export TZ=America/New_York`)
+   - Checks if current time matches the target time (e.g., exactly 4:00:00 AM)
+   - Runs the backup only when conditions are met
+
+2. Schedule the wrapper to run frequently (e.g., every minute) using cron:
+   ```bash
+   # Runs the wrapper every minute
+   * * * * * /path/to/wrapper-script.sh
+   ```
+
+Example wrapper script for 4am Eastern Time backup:
+```bash
+#!/bin/bash
+# Set timezone to Eastern Time
+export TZ=America/New_York
+
+# Get current hour and minute
+HOUR=$(date +%H)
+MINUTE=$(date +%M)
+
+# Check if it's exactly 4:00 AM
+if [[ "$HOUR" == "04" && "$MINUTE" == "00" ]]; then
+    echo "$(date): Running Eastern Time backup..."
+    /path/to/your/backup-script.sh
+fi
+```
+
+#### Approach 2: Sleep Until Target Time (Recommended - More efficient)
+1. Create a wrapper script that calculates the exact next occurrence of the target time and sleeps until then:
+
+```bash
+#!/bin/bash
+# Set timezone to Eastern Time
+export TZ=America/New_York
+
+# Function to calculate seconds until next 04:00:00
+get_sleep_seconds() {
+    # Get current time in seconds since epoch
+    now=$(date +%s)
+    # Get today's 04:00:00 in seconds since epoch
+    today_4am=$(date -d "today 04:00:00" +%s)
+    
+    # If it's already past 04:00:00 today, target tomorrow
+    if [ "$now" -gt "$today_4am" ]; then
+        target=$(date -d "tomorrow 04:00:00" +%s)
+    else
+        target=$today_4am
+    fi
+    
+    # Calculate seconds to sleep
+    echo $((target - now))
+}
+
+# Sleep until the target time
+sleep_seconds=$(get_sleep_seconds)
+echo "$(date): Sleeping for $sleep_seconds seconds until 04:00:00 Eastern Time"
+sleep "$sleep_seconds"
+
+echo "$(date): Running Eastern Time backup..."
+/path/to/your/backup-script.sh
+```
+
+2. Schedule the wrapper to run once daily (e.g., at midnight UTC) using cron:
+   ```bash
+   # Runs the wrapper daily at midnight UTC
+   0 0 * * * /path/to/wrapper-script.sh
+   ```
+
+This approach is more efficient as it only wakes up once per day at the exact target time, rather than running a check every minute. It was implemented for the Hermes `/opt/data` backup to GitHub at 4am Eastern Time.
+
 ### Multiple Directories
 - Create separate scripts for each directory, or modify the script to accept directory as argument
 - Or create multiple cron jobs with different scripts
@@ -196,3 +304,28 @@ To run the backup daily at 4 AM:
 ## Related Skills
 - `hermes-persistent-storage`: For managing files that survive container reloads
 - `uv-package-installation`: For installing packages in restricted environments
+
+## Environment-Specific Tips
+
+### Hermes Container Environment
+- Persistent data should be stored in `/opt/data/` (not ~/.hermes)
+- SSH keys for cron jobs should be placed in `/opt/data/home/.ssh/` for persistence
+- The `/opt/data/` directory is designed to survive container reloads
+- When backing up Hermes configurations, target `/opt/data/` rather than ~/.hermes
+- Always test scripts manually before scheduling via cronjob
+
+### Hermes-Specific DST-Adjusting Backup Implementation
+For the Hermes environment, we implemented a specific solution for backing up `/opt/data` to GitHub at 4am Eastern Time with automatic DST adjustment:
+
+1. **Wrapper Script Location**: `/opt/data/scripts/opt-data-backup-wrapper.sh`
+2. **Cron Schedule**: `* * * * *` (runs every minute)
+3. **Timezone Handling**: Uses `export TZ=America/New_York` to get Eastern Time
+4. **Precision Check**: Only runs when time is exactly 04:00 (HH:MM)
+5. **Backup Script**: Calls `/opt/data/scripts/opt-data-git-backup.sh` which performs the actual git operations
+
+This approach eliminates the need to manually adjust cron schedules twice yearly for DST changes while maintaining secure backups that exclude sensitive data via a comprehensive .gitignore.
+
+### Working with Existing Configurations
+- Before creating new cronjobs, check existing ones with `cronjob list`
+- It's often more efficient to fix existing misconfigured jobs than create duplicates
+- When fixing cronjobs, ensure you understand what skills the original job required
