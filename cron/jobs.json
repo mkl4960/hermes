@@ -53,15 +53,15 @@
       "schedule_display": "*/10 * * * *",
       "repeat": {
         "times": null,
-        "completed": 2502
+        "completed": 2550
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-19T21:49:44.554442+00:00",
-      "next_run_at": "2026-05-11T00:10:00+00:00",
-      "last_run_at": "2026-05-11T00:02:44.651048+00:00",
+      "next_run_at": "2026-05-11T08:10:00+00:00",
+      "last_run_at": "2026-05-11T08:01:07.989603+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -85,21 +85,21 @@
       "script": null,
       "schedule": {
         "kind": "cron",
-        "expr": "0 0 * * *",
-        "display": "0 0 * * *"
+        "expr": "0 8 * * *",
+        "display": "0 8 * * *"
       },
-      "schedule_display": "0 0 * * *",
+      "schedule_display": "0 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 6
+        "completed": 7
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-08T04:09:14.401319+00:00",
-      "next_run_at": "2026-05-12T00:00:00+00:00",
-      "last_run_at": "2026-05-09T13:06:40.437104+00:00",
+      "next_run_at": "2026-05-12T08:00:00+00:00",
+      "last_run_at": "2026-05-11T00:13:30.146822+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -113,5 +113,5 @@
       "enabled_toolsets": null
     }
   ],
-  "updated_at": "2026-05-11T00:02:44.654520+00:00"
+  "updated_at": "2026-05-11T08:01:07.992479+00:00"
 }
