@@ -133,22 +133,10 @@ Ensure persistent storage is used:
 - Confirm script uses absolute paths to this directory
 
 ### Issue: Cron Job Using Wrong Script Path
-**Symptoms**:
-- Cron job fails with "No such file or directory" error
-- Error shows path like `/opt/data/scripts/check_agentmail.py` doesn't exist
+**Symptoms**:\n- Cron job fails with "No such file or directory" error\n- Error shows path like `/opt/data/scripts/check_agentmail.py` doesn't exist\n\n**Root Cause**:\n- Outdated cron job configuration pointing to old/non-existent script\n- Skill-based script path not updated in cron job\n\n**Solution**:\nUpdate cron job to use current skill-based script:\n```bash\n*/10 * * * * /opt/hermes/.venv/bin/python /opt/data/skills/email/agentmail-monitor/scripts/monitor.py\n```\nUse `cronjob update` command with correct job_id and prompt.
 
-**Root Cause**:
-- Outdated cron job configuration pointing to old/non-existent script
-- Skill-based script path not updated in cron job
-
-**Solution**:
-Update cron job to use current skill-based script:
-```bash
-*/10 * * * * /opt/hermes/.venv/bin/python /opt/data/skills/email/agentmail-monitor/scripts/agentmail/monitor.py
-```
-Use `cronjob update` command with correct job_id and prompt.
-
-### Performance Optimization Tips
+### Issue: Hermes Virtual Environment Permission/Pip Problems
+**Symptoms**:\n- Script fails with `ModuleNotFoundError: No module named 'agentmail'`\n- `/opt/hermes/.venv/bin/pip: No such file or directory`\n- `python3 -m pip install agentmail` fails with \"externally-managed-environment\" error\n- Virtual environment appears broken or incomplete\n\n**Root Cause**:\n- The Hermes virtual environment (`/opt/hermes/.venv`) may have permission issues, missing pip installation, or be improperly initialized\n- Running in container environments as non-root user can cause permission problems\n- Debian/Ubuntu systems have externally managed Python environments that block pip install system-wide\n\n**Solution**:\n1. **Use user site-packages with system Python** (recommended for Debian/Ubuntu):\n   ```bash\n   python3 -m pip install --break-system-packages agentmail\n   ```\n   This installs to `~/.local/lib/python3.13/site-packages` and is automatically on Python's path.\n\n2. **Create a dedicated virtual environment in writable location**:\n   ```bash\n   python3 -m venv /opt/data/venv\n   /opt/data/venv/bin/pip install agentmail\n   ```\n   Then ensure the monitor script uses `/opt/data/venv/bin/python` explicitly.\n\n3. **Fix Hermes venv permissions** (if you prefer to use it):\n   ```bash\n   # If you have sudo access\n   sudo chown -R $USER:$USER /opt/hermes/.venv\n   # Then try to reinstall pip\n   /opt/hermes/.venv/bin/python -m ensurepip --upgrade\n   ```\n\n4. **Verify the monitor script shebang**:\n   The script uses `#!/usr/bin/env python3`, so it will use whatever python3 is first in PATH.\n   Adjust your PATH or cron job to point to the correct Python if needed.\n\n**Verification**:\n- Test import: `python3 -c \"import agentmail; print('AgentMail version:', agentmail.__version__)\"`\n- Check that the monitoring script runs without import errors\n\n### Performance Optimization Tips
 
 #### Batch Processing
 - Process all messages in a single fetch (limit=50)

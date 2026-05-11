@@ -1,6 +1,8 @@
 import os
 import json
 import urllib.request
+import sys
+sys.path.insert(0, '/opt/data/agentmail_packages')
 from agentmail import AgentMail
 
 def fetch_weather_json(city):

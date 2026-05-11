@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """
 Monitor AgentMail inbox for emails matching specific criteria.
 Designed for silent cron operation - only outputs when new matches found.

@@ -58,18 +58,7 @@ If neither pip nor uv work:
 
 ## Hermes-Specific Notes\n- In Hermes images, `uv` is typically pre-installed at `/usr/local/bin/uv`\n- The Python environment often uses `uv` for package management rather than traditional pip\n- Packages installed with `uv pip install` are usually available in `/opt/hermes/.venv/lib/python3.x/site-packages/`\n- You may need to add this path to `sys.path` in Python if imports fail initially:\n  ```python\n  import sys\n  sys.path.insert(0, '/opt/hermes/.venv/lib/python3.13/site-packages')\n  ```\n- **Important**: After installing packages with `uv`, you must use the Hermes-specific Python interpreter (`/opt/hermes/.venv/bin/python`) rather than the system Python (`/usr/bin/python3`) to access the installed packages. Always test with the interpreter you intend to use for your script.\n- When running scripts via cron that depend on newly installed packages, ensure the cron job uses the Hermes Python interpreter and that environment variables (like API keys from `/opt/data/.env`) are loaded. The script may need to source the .env file or explicitly load variables as shown in the check_agentmail.py example.
 
-## Pitfalls and How to Avoid Them
-1. **Assuming pip is available**: Always check first - in restricted environments, pip is often missing
-2. **Trying sudo when not available**: Many Hermes environments don't have sudo - look for alternatives like uv
-3. **Not verifying installation**: Always test that you can import the package after installation
-4. **Ignoring environment paths**: Hermes may use virtual environments - check where packages are actually installed
-5. **Overlooking version conflicts**: Use `uv pip list` to see what's already installed before adding new packages
-
-## Verification
-After installation, confirm:
-- Package appears in `uv pip list` output
-- Python can import the package without errors
-- Basic functionality of the package works (e.g., for AgentMail, you can instantiate the client)
+## Pitfalls and How to Avoid Them\n1. **Assuming pip is available**: Always check first - in restricted environments, pip is often missing\n2. **Trying sudo when not available**: Many Hermes environments don't have sudo - look for alternatives like uv\n3. **Not verifying installation**: Always test that you can import the package after installation\n4. **Ignoring environment paths**: Hermes may use virtual environments - check where packages are actually installed\n5. **Overlooking version conflicts**: Use `uv pip list` to see what's already installed before adding new packages\n6. **Permission denied on site-packages**: If `uv pip install` fails with permission denied on `/opt/hermes/.venv/lib/python3.x/site-packages/`, use the `--target` flag to install to a writable directory and add it to Python path\n\n## Verification\nAfter installation, confirm:\n- Package appears in `uv pip list` output (if installed to site-packages) or in the target directory\n- Python can import the package without errors (remember to add target directory to sys.path if using --target)\n- Basic functionality of the package works (e.g., for AgentMail, you can instantiate the client)
 
 ## Example: Installing AgentMail for Email Functionality
 ```bash

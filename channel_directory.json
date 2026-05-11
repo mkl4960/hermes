@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-09T13:25:05.719755",
+  "updated_at": "2026-05-10T23:57:08.055204",
   "platforms": {
     "discord": [
       {
@@ -34,7 +34,7 @@
       },
       {
         "id": "1495209142481064067",
-        "name": "mkl4960",
+        "name": "ML",
         "type": "dm",
         "thread_id": null
       },
@@ -61,6 +61,84 @@
         "name": "ML's server / #hermes / Email mkl4960@yahoo.com 5 day weather forecast for Boston / topic 1498071256988123148",
         "type": "thread",
         "thread_id": "1498071256988123148"
+      },
+      {
+        "id": "1502668587561910322:1502668587561910322",
+        "name": "ML's server / #hermes / hi / topic 1502668587561910322",
+        "type": "thread",
+        "thread_id": "1502668587561910322"
+      },
+      {
+        "id": "1502668673066729564:1502668673066729564",
+        "name": "ML's server / #openclaw / hello / This is a good place to talk about Openclaw",
+        "type": "thread",
+        "thread_id": "1502668673066729564"
+      },
+      {
+        "id": "1502669227663032371:1502669227663032371",
+        "name": "ML's server / #general / good morning / topic 1502669227663032371",
+        "type": "thread",
+        "thread_id": "1502669227663032371"
+      },
+      {
+        "id": "1502669622565015562:1502669622565015562",
+        "name": "ML's server / #openclaw / can you not response in this channel even if i mentioned you? / This is a good place to talk about Openclaw",
+        "type": "thread",
+        "thread_id": "1502669622565015562"
+      },
+      {
+        "id": "1502669816035803226:1502669816035803226",
+        "name": "ML's server / #openclaw / r u here? / This is a good place to talk about Openclaw",
+        "type": "thread",
+        "thread_id": "1502669816035803226"
+      },
+      {
+        "id": "1502670625628487732:1502670625628487732",
+        "name": "ML's server / #openclaw / hi / This is a good place to talk about Openclaw",
+        "type": "thread",
+        "thread_id": "1502670625628487732"
+      },
+      {
+        "id": "1502671200072237297:1502671200072237297",
+        "name": "ML's server / #openclaw / hello / This is a good place to talk about Openclaw",
+        "type": "thread",
+        "thread_id": "1502671200072237297"
+      },
+      {
+        "id": "1502672078569083042:1502672078569083042",
+        "name": "ML's server / #openclaw / still here? / This is a good place to talk about Openclaw",
+        "type": "thread",
+        "thread_id": "1502672078569083042"
+      },
+      {
+        "id": "1502674857282900048:1502674857282900048",
+        "name": "ML's server / #openclaw / hey / This is a good place to talk about Openclaw",
+        "type": "thread",
+        "thread_id": "1502674857282900048"
+      },
+      {
+        "id": "1502675837001011344:1502675837001011344",
+        "name": "ML's server / #general / hey / topic 1502675837001011344",
+        "type": "thread",
+        "thread_id": "1502675837001011344"
+      },
+      {
+        "id": "1502682675939377195:1502682675939377195",
+        "name": "ML's server / #general / is it cold today? / topic 1502682675939377195",
+        "type": "thread",
+        "thread_id": "1502682675939377195"
+      },
+      {
+        "id": "1502701622294216814:1502701622294216814",
+        "name": "ML's server / #general / hi / topic 1502701622294216814",
+        "type": "thread",
+        "thread_id": "1502701622294216814"
+      },
+      {
+        "id": "1502888791151743029:1502888791151743029",
+        "name": "ML's server / #hermes / What is the weather tomorrow in Newark nj / topic 1502888791151743029",
+        "type": "thread",
+        "thread_id": "1502888791151743029"
       }
     ],
     "telegram": [
@@ -85,6 +163,10 @@
     "wecom_callback": [],
     "weixin": [],
     "bluebubbles": [],
-    "qqbot": []
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "teams": []
   }
 }
