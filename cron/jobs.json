@@ -3,7 +3,7 @@
     {
       "id": "951c4d39def3",
       "name": "daily-weather-email",
-      "prompt": "/opt/hermes/.venv/bin/python /opt/data/scripts/hourly_weather_f.py",
+      "prompt": "/usr/bin/python3 /opt/data/scripts/hourly_weather_f.py",
       "skills": [],
       "skill": null,
       "model": null,
@@ -18,15 +18,15 @@
       "schedule_display": "0 10 * * *",
       "repeat": {
         "times": null,
-        "completed": 23
+        "completed": 24
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-19T04:30:20.515718+00:00",
-      "next_run_at": "2026-05-11T10:00:00+00:00",
-      "last_run_at": "2026-05-10T10:08:36.938683+00:00",
+      "next_run_at": "2026-05-12T10:00:00+00:00",
+      "last_run_at": "2026-05-11T10:03:09.960329+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -36,7 +36,7 @@
     {
       "id": "5a55669c82b0",
       "name": "agentmail-monitor",
-      "prompt": "/opt/hermes/.venv/bin/python /opt/data/skills/email/agentmail-monitor/scripts/monitor.py",
+      "prompt": "/usr/bin/python3 /opt/data/skills/email/agentmail-monitor/scripts/monitor.py",
       "skills": [
         "agentmail-monitor"
       ],
@@ -53,15 +53,15 @@
       "schedule_display": "*/10 * * * *",
       "repeat": {
         "times": null,
-        "completed": 2550
+        "completed": 2693
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-19T21:49:44.554442+00:00",
-      "next_run_at": "2026-05-11T08:10:00+00:00",
-      "last_run_at": "2026-05-11T08:01:07.989603+00:00",
+      "next_run_at": "2026-05-12T08:10:00+00:00",
+      "last_run_at": "2026-05-12T08:01:48.228143+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -91,15 +91,15 @@
       "schedule_display": "0 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 7
+        "completed": 8
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-08T04:09:14.401319+00:00",
-      "next_run_at": "2026-05-12T08:00:00+00:00",
-      "last_run_at": "2026-05-11T00:13:30.146822+00:00",
+      "next_run_at": "2026-05-13T08:00:00+00:00",
+      "last_run_at": "2026-05-11T08:07:03.968717+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -113,5 +113,5 @@
       "enabled_toolsets": null
     }
   ],
-  "updated_at": "2026-05-11T08:01:07.992479+00:00"
+  "updated_at": "2026-05-12T08:01:48.232833+00:00"
 }

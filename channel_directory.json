@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-11T07:58:28.403778",
+  "updated_at": "2026-05-12T07:55:43.565520",
   "platforms": {
     "discord": [
       {
@@ -145,6 +145,12 @@
         "name": "ML's server / #hermes / When is the daily back up cron set to run? Why did i get a notification at 8:... / topic 1503190845120057424",
         "type": "thread",
         "thread_id": "1503190845120057424"
+      },
+      {
+        "id": "1503557930514124851:1503557930514124851",
+        "name": "ML's server / #hermes / Can you change the cron to use system python / topic 1503557930514124851",
+        "type": "thread",
+        "thread_id": "1503557930514124851"
       }
     ],
     "telegram": [

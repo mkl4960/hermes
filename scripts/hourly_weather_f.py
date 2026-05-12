@@ -1,14 +1,23 @@
 import os
 import json
 import urllib.request
+import urllib.error
 import sys
+import time
 sys.path.insert(0, '/opt/data/agentmail_packages')
 from agentmail import AgentMail
 
-def fetch_weather_json(city):
+def fetch_weather_json(city, retries=3, backoff_factor=1):
     url = f'https://wttr.in/{city}?format=j1'
-    with urllib.request.urlopen(url) as resp:
-        return json.load(resp)
+    for attempt in range(retries):
+        try:
+            with urllib.request.urlopen(url) as resp:
+                return json.load(resp)
+        except urllib.error.URLError as e:
+            if attempt < retries - 1:
+                time.sleep(backoff_factor * (2 ** attempt))
+            else:
+                raise
 
 def format_hourly(hourly_list):
     lines = []
