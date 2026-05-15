@@ -8,6 +8,8 @@ import os
 import sys
 import re
 import datetime
+# Add user site-packages to path for agentmail import
+sys.path.insert(0, '/opt/data/home/.local/lib/python3.13/site-packages')
 from agentmail import AgentMail
 
 LOG_FILE = '/opt/data/agentmail/monitor.log'
