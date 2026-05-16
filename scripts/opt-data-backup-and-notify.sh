@@ -19,8 +19,8 @@ get_next_04_et_epoch() {
 
     now=$(date +%s)
 
-    if [ "$today_04" -gt "$now" ]; then
-        # Today's 04:00:00 ET is in the future
+    if [ "$today_04" -ge "$now" ]; then
+        # Today's 04:00:00 ET is in the future or now
         echo "$today_04"
     else
         # Today's 04:00:00 ET has passed, get tomorrow's
