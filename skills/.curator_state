@@ -1,8 +1,8 @@
 {
-  "last_report_path": null,
-  "last_run_at": "2026-05-10T05:44:52.763813+00:00",
-  "last_run_duration_seconds": null,
-  "last_run_summary": "deferred first run — curator seeded, will run after one interval; use `hermes curator run --dry-run` to preview now",
+  "last_report_path": "/opt/data/logs/curator/20260517-061549",
+  "last_run_at": "2026-05-17T06:15:49.964491+00:00",
+  "last_run_duration_seconds": 55.850622,
+  "last_run_summary": "auto: no changes; llm: ## Structured summary (required)\n```yaml\nconsolidations: []\nprunings: []\n```\n\n**Human summary:**  \nThe agent-created skill list contains only one skill: `web-element-extraction`. Since consolidation requires clusters of 2+ skills sharing a …",
   "paused": false,
-  "run_count": 0
+  "run_count": 1
 }
