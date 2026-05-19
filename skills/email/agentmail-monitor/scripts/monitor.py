@@ -228,20 +228,29 @@ def main():
             # Extract body - try common attributes
             body = ''
             if hasattr(message, 'body'):
-                body = getattr(message, 'body', '')
+                val = getattr(message, 'body')
+                body = val if val is not None else ''
             elif hasattr(message, 'content'):
-                body = getattr(message, 'content', '')
+                val = getattr(message, 'content')
+                body = val if val is not None else ''
             elif hasattr(message, 'text'):
-                body = getattr(message, 'text', '')
+                val = getattr(message, 'text')
+                body = val if val is not None else ''
             elif hasattr(message, 'html'):
-                body = getattr(message, 'html', '')
+                val = getattr(message, 'html')
+                body = val if val is not None else ''
             # If still empty, try to get from a 'payload' or 'parts' (common in email APIs)
             if not body and hasattr(message, 'payload'):
-                payload = getattr(message, 'payload', '')
+                payload = getattr(message, 'payload')
                 if isinstance(payload, dict):
                     body = payload.get('body', '') or payload.get('data', '')
+                    if body is None:
+                        body = ''
                 else:
-                    body = str(payload)
+                    if payload is not None:
+                        body = str(payload)
+                    else:
+                        body = ''
             log_message('Processing message ID={}, body length={}'.format(msg_id, len(body)))
             urls = extract_youtube_urls(body)
             log_message('Extracted URLs: {}'.format(urls))
