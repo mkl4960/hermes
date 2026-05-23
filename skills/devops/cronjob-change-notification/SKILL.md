@@ -241,3 +241,11 @@ This skill was created based on enhancing the Hermes opt-data-daily-backup job:
 3. Formatted Discord notifications with emojis and file lists
 4. Updated the existing cron job to use the enhancement script
 5. Maintained all existing functionality while adding notifications
+
+### Details of the opt-data Backup Implementation
+The actual implementation uses a "Sleep Until Target Time" approach in `/opt/data/scripts/opt-data-backup-and-notify.sh`:
+- Calculates exact seconds until next 04:00:00 Eastern Time (adjusts for DST automatically)
+- Sleeps for that duration, then runs the backup script
+- More efficient than frequent checking (runs once per day at exact target time)
+- Calls `/opt/data/scripts/opt-data-git-backup.sh` for actual git operations
+- Eliminates need to manually adjust cron schedules twice yearly for DST changes
