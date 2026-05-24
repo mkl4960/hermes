@@ -53,15 +53,15 @@
       "schedule_display": "*/10 * * * *",
       "repeat": {
         "times": null,
-        "completed": 4412
+        "completed": 4405
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-19T21:49:44.554442+00:00",
-      "next_run_at": "2026-05-24T08:10:00+00:00",
-      "last_run_at": "2026-05-24T08:06:58.923134+00:00",
+      "next_run_at": "2026-05-24T07:00:00+00:00",
+      "last_run_at": "2026-05-24T06:51:58.398833+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -98,7 +98,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-08T04:09:14.401319+00:00",
-      "next_run_at": "2026-05-25T08:00:00+00:00",
+      "next_run_at": "2026-05-24T08:00:00+00:00",
       "last_run_at": "2026-05-23T08:09:20.014508+00:00",
       "last_status": "ok",
       "last_error": null,
@@ -113,5 +113,5 @@
       "enabled_toolsets": null
     }
   ],
-  "updated_at": "2026-05-24T08:06:58.926276+00:00"
+  "updated_at": "2026-05-24T06:51:58.402528+00:00"
 }
