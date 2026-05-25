@@ -55,16 +55,7 @@ Complete workflows for integrating AgentMail with external services like Discord
 ### 6. File Management (`agentmail-clg-youtube-link-setup` subsection)
 Procedures for renaming and organizing persistent storage files.
 
-## Quick Reference
-
-| Component | Purpose | Key Files/Directories |
-|-----------|---------|----------------------|
-| **Sending** | Send emails via AgentMail API | `agentmail` skill |
-| **Persistence** | Survive container reloads | `/opt/data/scripts/agentmail/`, `/opt/data/agentmail/` |
-| **Monitoring** | Watch for specific emails | `/opt/data/agentmail/seen_ids.txt` |
-| **Enhanced Monitoring** | Extract URLs, label messages | `/opt/data/agentmail/seen_ids.txt`, labeling |
-| **Discord Workflow** | YouTube URLs to Discord | State file, webhook URL |
-| **File Management** | Organize persistent files | Renaming procedures, prefix conventions |
+## Quick Reference\n\n| Component | Purpose | Key Files/Directories |\n|-----------|---------|----------------------|\n| **Sending** | Send emails via AgentMail API | `agentmail` skill |\n| **Persistence** | Survive container reloads | `/opt/data/scripts/agentmail/`, `/opt/data/agentmail/` |\n| **Monitoring** | Watch for specific emails | `/opt/data/agentmail/seen_ids.txt` |\n| **Enhanced Monitoring** | Extract URLs, label messages | `/opt/data/agentmail/seen_ids.txt`, labeling |\n| **Discord Workflow** | YouTube URLs to Discord | State file, webhook URL |\n| **File Management** | Organize persistent files | Renaming procedures, prefix conventions |\n| **Monitor Locations** | Script storage guidelines | `references/monitor_locations.md` |
 
 ## Environment Setup
 
@@ -90,7 +81,7 @@ response = client.inboxes.messages.send(
 ```
 
 ### Persistent Monitoring Script Location
-Always store monitoring scripts in: `/opt/data/scripts/agentmail/`
+Always store monitoring scripts in: `/opt/data/scripts/agentmail/` (or in the skill's own `scripts/` directory for skill-specific monitors).
 
 ### State Tracking Files
 Store seen message IDs in: `/opt/data/agentmail/seen_ids.txt`
