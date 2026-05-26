@@ -51,6 +51,12 @@ if [ $sleep_seconds -lt 0 ]; then
     sleep_seconds=0
 fi
 
+# If sleep_seconds is too large (more than 30 minutes), run backup now
+if [ $sleep_seconds -gt 1800 ]; then
+    echo "Warning: Sleep time ($sleep_seconds seconds) is too long. Running backup now." >&2
+    sleep_seconds=0
+fi
+
 # Sleep until target time (if needed)
 if [ $sleep_seconds -gt 0 ]; then
     # Optional: log for debugging

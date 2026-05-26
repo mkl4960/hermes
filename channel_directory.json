@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-25T07:57:06.000634",
+  "updated_at": "2026-05-26T07:58:58.848829",
   "platforms": {
     "discord": [
       {
@@ -157,6 +157,18 @@
         "name": "ML's server / #general / what is the weather like in parsippany tomorrow / topic 1507232299752624168",
         "type": "thread",
         "thread_id": "1507232299752624168"
+      },
+      {
+        "id": "1508637442033455144:1508637442033455144",
+        "name": "ML's server / #hermes / Why is it broken again?!! / topic 1508637442033455144",
+        "type": "thread",
+        "thread_id": "1508637442033455144"
+      },
+      {
+        "id": "1508643185096790219:1508643185096790219",
+        "name": "ML's server / #hermes / Can you make sure it never break again / topic 1508643185096790219",
+        "type": "thread",
+        "thread_id": "1508643185096790219"
       }
     ],
     "telegram": [

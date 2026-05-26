@@ -3,14 +3,27 @@
     "archived_at": null,
     "created_at": "2026-05-24T07:12:54.877598+00:00",
     "created_by": null,
-    "last_patched_at": "2026-05-24T09:13:54.106288+00:00",
-    "last_used_at": "2026-05-24T09:10:57.432828+00:00",
-    "last_viewed_at": "2026-05-24T09:10:57.424026+00:00",
-    "patch_count": 3,
+    "last_patched_at": "2026-05-26T01:20:41.428899+00:00",
+    "last_used_at": "2026-05-26T01:19:19.171027+00:00",
+    "last_viewed_at": "2026-05-26T01:19:19.162525+00:00",
+    "patch_count": 6,
     "pinned": false,
     "state": "active",
-    "use_count": 6,
-    "view_count": 6
+    "use_count": 9,
+    "view_count": 9
+  },
+  "agentmail-monitor": {
+    "archived_at": null,
+    "created_at": "2026-05-26T01:25:29.334294+00:00",
+    "created_by": null,
+    "last_patched_at": "2026-05-26T01:31:36.430520+00:00",
+    "last_used_at": "2026-05-26T08:00:59.562837+00:00",
+    "last_viewed_at": "2026-05-26T01:32:05.004176+00:00",
+    "patch_count": 1,
+    "pinned": false,
+    "state": "active",
+    "use_count": 44,
+    "view_count": 4
   },
   "cronjob-change-notification": {
     "archived_at": null,
@@ -37,6 +50,19 @@
     "state": "active",
     "use_count": 5,
     "view_count": 5
+  },
+  "hermes-persistent-storage": {
+    "archived_at": null,
+    "created_at": "2026-05-26T01:34:33.269388+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_used_at": "2026-05-26T01:34:33.281866+00:00",
+    "last_viewed_at": "2026-05-26T01:34:33.269415+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
   },
   "uv-package-installation": {
     "archived_at": null,

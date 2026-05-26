@@ -94,6 +94,47 @@ After setting up any AgentMail integration:
 3. Check that cron jobs reference `/opt/data/` paths
 4. Validate that state files are being updated correctly
 5. Monitor logs for silent operation (no output = working correctly when no new matches)
+6. **Important**: Silence does NOT mean broken - the agentmail-monitor skill is designed to operate silently when no new matching emails are found. This is expected behavior, not an error.
+
+## Troubleshooting "Broken" Monitoring
+
+If you think your AgentMail monitoring is broken because you're not seeing output:
+
+### Common Misinterpretations
+- **Silence = Working**: The monitor script produces output ONLY when new matching emails are found. No output means it's working correctly but found nothing new.
+- **Check Logs First**: Always check `/opt/data/agentmail/monitor.log` to verify the script is running and processing emails.
+- **Verify Timing**: Ensure your expectations match the cron schedule (e.g., every 10 minutes for `*/10 * * * *`).
+
+### Verification Steps
+1. **Check Script Execution**: Look at the monitor.log for recent timestamps
+2. **Confirm Connection**: Verify the script can connect to AgentMail and list inboxes
+3. **Test Search Criteria**: Temporarily broaden search terms to see if emails exist but aren't matching
+4. **Manual Test**: Run the script manually: `cd /opt/data/skills/email/agentmail-monitor && python3 scripts/monitor.py`
+5. **Check Email Source**: Verify emails are actually being sent to the target inbox (`laumiex@agentmail.to`)
+
+### Expected Log Patterns
+**Healthy Silent Operation**:
+```
+[TIMESTAMP] Loaded X seen IDs, Y seen URLs
+[TIMESTAMP] API key found (length Z)
+[TIMESTAMP] AgentMail client initialized
+[TIMESTAMP] Successfully listed inboxes
+[TIMESTAMP] Target inbox ID: laumiex@agentmail.to
+[TIMESTAMP] Fetched 50 messages
+[TIMESTAMP] Total new matches: 0
+[TIMESTAMP] No new matching emails - exiting
+```
+
+**When New Matches Found**:
+```
+[TIMESTAMP] New match found: ID=<...>, Subject=...
+[TIMESTAMP] Total new matches: N
+[TIMESTAMP] Updated seen IDs, now X+M seen
+[TIMESTAMP] Processing message ID=<...>, body length=L
+[TIMESTAMP] Extracted URLs: [...]
+[TIMESTAMP] New YouTube URLs to send: [...]
+[TIMESTAMP] Updated seen URLs, now Y+N seen
+```
 
 ## Maintenance
 
@@ -108,6 +149,7 @@ After setting up any AgentMail integration:
 - `web-search`: For researching AgentMail API updates or troubleshooting
 - `systematic-debugging`: For diagnosing integration issues
 - `devops/uv-package-installation`: For installing AgentMail SDK persistently
+- `cronjob-change-notification`: For enhancing cron jobs to send notifications about changes (useful for turning silent monitors into alerting systems)
 
 ---
 
