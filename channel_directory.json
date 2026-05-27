@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-26T07:58:58.848829",
+  "updated_at": "2026-05-27T07:57:21.126937",
   "platforms": {
     "discord": [
       {
@@ -169,6 +169,12 @@
         "name": "ML's server / #hermes / Can you make sure it never break again / topic 1508643185096790219",
         "type": "thread",
         "thread_id": "1508643185096790219"
+      },
+      {
+        "id": "1508791828202131566:1508791828202131566",
+        "name": "ML's server / #hermes / send me top 10 worldwide news in finance and investment daily at 7:30am / topic 1508791828202131566",
+        "type": "thread",
+        "thread_id": "1508791828202131566"
       }
     ],
     "telegram": [
