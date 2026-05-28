@@ -18,15 +18,15 @@
       "schedule_display": "0 10 * * *",
       "repeat": {
         "times": null,
-        "completed": 40
+        "completed": 41
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-19T04:30:20.515718+00:00",
-      "next_run_at": "2026-05-27T10:00:00+00:00",
-      "last_run_at": "2026-05-26T10:01:28.011991+00:00",
+      "next_run_at": "2026-05-28T10:00:00+00:00",
+      "last_run_at": "2026-05-27T10:00:54.391655+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -53,15 +53,15 @@
       "schedule_display": "*/10 * * * *",
       "repeat": {
         "times": null,
-        "completed": 4842
+        "completed": 4986
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-19T21:49:44.554442+00:00",
-      "next_run_at": "2026-05-27T08:10:00+00:00",
-      "last_run_at": "2026-05-27T08:01:51.556770+00:00",
+      "next_run_at": "2026-05-28T08:10:00+00:00",
+      "last_run_at": "2026-05-28T08:02:44.052749+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -91,15 +91,15 @@
       "schedule_display": "0 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 23
+        "completed": 24
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-08T04:09:14.401319+00:00",
-      "next_run_at": "2026-05-28T08:00:00+00:00",
-      "last_run_at": "2026-05-26T08:01:29.640973+00:00",
+      "next_run_at": "2026-05-29T08:00:00+00:00",
+      "last_run_at": "2026-05-27T08:02:32.184382+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -113,5 +113,5 @@
       "enabled_toolsets": null
     }
   ],
-  "updated_at": "2026-05-27T08:01:51.563293+00:00"
+  "updated_at": "2026-05-28T08:02:44.057882+00:00"
 }
