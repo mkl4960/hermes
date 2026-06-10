@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-09T07:57:19.676139",
+  "updated_at": "2026-06-10T07:56:49.264673",
   "platforms": {
     "discord": [
       {
@@ -181,6 +181,12 @@
         "name": "ML's server / #hermes / Goodnight / topic 1509411882350411796",
         "type": "thread",
         "thread_id": "1509411882350411796"
+      },
+      {
+        "id": "1513942738897342726:1513942738897342726",
+        "name": "ML's server / #hermes / No i mean also send links in the daily-ai-news / topic 1513942738897342726",
+        "type": "thread",
+        "thread_id": "1513942738897342726"
       }
     ],
     "telegram": [
